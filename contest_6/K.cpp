@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-void DoingDynamic(std::vector<int>& weight, std::vector<int>& price,
+void doing_dynamic(std::vector<int>& weight, std::vector<int>& price,
                   std::vector<std::vector<int>>& dp) {
   for (size_t i = 1; i < dp.size(); ++i) {
     for (size_t j = 0; j < dp[i].size(); ++j) {
@@ -16,7 +16,7 @@ void DoingDynamic(std::vector<int>& weight, std::vector<int>& price,
   }
 }
 
-void RecoveringAnswer(std::vector<int>& ans, std::vector<int>& weight,
+void recovering_answer(std::vector<int>& ans, std::vector<int>& weight,
                       std::vector<std::vector<int>>& dp) {
   for (size_t i = dp.size() - 1, j = dp[0].size() - 1;;) {
     if (dp[i][j] == 0) {
@@ -34,9 +34,9 @@ void RecoveringAnswer(std::vector<int>& ans, std::vector<int>& weight,
 }
 
 int main() {
-  int amount;
+  int amount = 0;
   std::cin >> amount;
-  int max_weight;
+  int max_weight = 0;
   std::cin >> max_weight;
   std::vector<int> weight(amount);
   for (int i = 0; i < amount; ++i) {
@@ -46,11 +46,13 @@ int main() {
   for (int i = 0; i < amount; ++i) {
     std::cin >> price[i];
   }
+
   std::vector<std::vector<int>> dp(amount + 1,
                                    std::vector<int>(max_weight + 1, 0));
-  DoingDynamic(weight, price, dp);
+  doing_dynamic(weight, price, dp);
+
   std::vector<int> ans;
-  RecoveringAnswer(ans, weight, dp);
+  recovering_answer(ans, weight, dp);
   for (size_t i = 0; i < ans.size(); ++i) {
     std::cout << ans[i] << "\n";
   }

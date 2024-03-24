@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-void DoingDynamic(std::vector<std::vector<int>>& dp, int height, int planes,
+void doing_dynamic(std::vector<std::vector<int>>& dp, int height, int planes,
                   int& ans) {
   for (int i = 1; i < height + 1; ++i) {
     for (int j = 1; j < planes + 1; ++j) {
@@ -19,14 +19,17 @@ void DoingDynamic(std::vector<std::vector<int>>& dp, int height, int planes,
 }
 
 int main() {
-  int height;
+  int height = 0;
   std::cin >> height;
-  int planes;
+  int planes = 0;
   std::cin >> planes;
+
   planes = std::min(planes, static_cast<int>(std::log2(height)) + 1);
+
   std::vector<std::vector<int>> dp(height + 1, std::vector<int>(planes + 1));
+
   int ans = -1;
-  DoingDynamic(dp, height, planes, ans);
+  doing_dynamic(dp, height, planes, ans);
   std::cout << ans << "\n";
   return 0;
 }
