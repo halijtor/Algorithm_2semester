@@ -115,6 +115,7 @@ int main() {
 
   int max_mask = 1 << size_n;
   std::vector<std::vector<int>> dp_table(size_m, std::vector<int>(max_mask, 0));
+  
   int result = 0;
   doing_dynamic(size_n, size_m, result, city_map, dp_table);
   std::cout << result << std::endl;
